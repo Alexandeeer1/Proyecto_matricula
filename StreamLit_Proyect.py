@@ -1,36 +1,41 @@
 import streamlit as st
-import csv
-import requests
-from io import StringIO
+import hashlib
 
-# URL del archivo CSV en GitHub
-csv_url = 'https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/main/uss_pass.csv'
+# Configuración de la página
+st.set_page_config(page_title="Mi Aplicación", page_icon=":lock:", layout="wide")
 
-# Función para autenticar usuarios desde un archivo CSV en línea
-def authenticate_user(username, password):
-    response = requests.get(csv_url)
-    if response.status_code == 200:
-        csv_data = StringIO(response.text)
-        csv_reader = csv.DictReader(csv_data)
-        for row in csv_reader:
-            print(f"Comparando con: {row['Usuarios']}, {row['Contraseña']}")
-            if row['Usuarios'] == username and row['Contraseña'] == password:
-                return True
-    return False
+# Título grande en el centro
+st.title("Bienvenido a Mi Aplicación")
+st.write("")  # Espacio en blanco para separar el título del formulario
 
-
-def main():
-    st.title("Autenticación de Usuarios")
-
-    username = st.text_input("Nombre de Usuario")
+# Formulario de login
+with st.form("login_form"):
+    username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
+    submit_button = st.form_submit_button("Iniciar sesión")
 
-    if st.button("Iniciar Sesión"):
-        if username and password:
-            if authenticate_user(username, password):
-                st.success(f"Bienvenido, {username}!")
-            else:
-                st.error("Credenciales incorrectas. Por favor, inténtalo de nuevo.")
+# Función para autenticar al usuario
+def authenticate(username, password):
+    # En un sistema real, aquí deberías consultar una base de datos o un servicio de autenticación
+    # Para fines de demostración, solo voy a verificar si el usuario y contraseña son "admin"
+    if username == "admin" and password == "admin":
+        return True
+    else:
+        return False
 
-if __name__ == "__main__":
-    main()
+# Procesar el formulario de login
+if submit_button:
+    if authenticate(username, password):
+        # Redirigir a la página de bienvenida si el usuario se autentica correctamente
+        st.session_state["authenticated"] = True
+        st.write("¡Bienvenido!")
+        st.write("Has iniciado sesión correctamente.")
+        st.button("Ir a la página de bienvenida", on_click=lambda: st.write("¡Hola!"))
+    else:
+        st.error("Usuario o contraseña incorrectos")
+
+# Página de bienvenida (solo se muestra si el usuario se autentica correctamente)
+if "authenticated" in st.session_state and st.session_state["authenticated"]:
+    st.title("Página de bienvenida")
+    st.write("¡Hola! Has iniciado sesión correctamente.")
+    st.button("Cerrar sesión", on_click=lambda: st.session_state["authenticated"] = False)
