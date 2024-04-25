@@ -1,7 +1,26 @@
 import streamlit as st
-import pandas as pd
+# Sidebar
+st.sidebar.title("Navegación")
+opcion = st.sidebar.radio("Selecciona una opción", ["Inicio", "Iniciar sesión"])
 
-st.write("¡Hola Mundo!")
-st.title("Mi Aplicación Streamlit")
-st.sidebar.header("Configuración")
-option = st.sidebar.selectbox("Seleccione una opción", ["Opción 1", "Opción 2", "Opción 3"])
+# Título centrado
+st.write("""
+<div style='text-align: center;'>
+    <h1>Mi Aplicación</h1>
+</div>
+""", unsafe_allow_html=True)
+
+# Página de inicio de sesión
+if opcion == "Iniciar sesión":
+    st.write("## Inicio de sesión")
+    usuario = st.text_input("Usuario")
+    contraseña = st.text_input("Contraseña", type="password")
+    if st.button("Iniciar sesión"):
+        # Aquí puedes agregar la lógica para autenticar al usuario
+        st.success("Inicio de sesión exitoso")
+
+# Página de inicio
+elif opcion == "Inicio":
+    st.write("## Bienvenido a mi aplicación")
+    # Aquí puedes agregar el contenido de la página de inicio
+
