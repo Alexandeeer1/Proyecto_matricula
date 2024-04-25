@@ -13,9 +13,11 @@ def authenticate_user(username, password):
         csv_data = StringIO(response.text)
         csv_reader = csv.DictReader(csv_data)
         for row in csv_reader:
+            print(f"Comparando con: {row['Usuarios']}, {row['Contraseña']}")
             if row['Usuarios'] == username and row['Contraseña'] == password:
                 return True
     return False
+
 
 def main():
     st.title("Autenticación de Usuarios")
