@@ -1,6 +1,10 @@
 import streamlit as st
 import csv
 
+with open('https://github.com/Alexandeeer1/Proyecto_matricula/blob/main/uss_pass.csv', 'r') as file:
+    # Resto del código de la función authenticate_user
+
+    
 # Función para autenticar usuarios desde un archivo CSV
 def authenticate_user(username, password):
     with open('uss_pass.csv', 'r') as file:
