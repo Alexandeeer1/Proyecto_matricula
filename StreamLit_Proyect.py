@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Establecer el estilo CSS para la imagen
+# Establecer el estilo CSS para el título y la imagen
 st.markdown(
     """
     <style>
@@ -12,6 +12,10 @@ st.markdown(
     .imagen {
         width: 50%; /* Ancho de la imagen */
         border-radius: 10px; /* Radio de borde de la imagen */
+    }
+
+    .titulo {
+        text-align: center; /* Centrar el texto del título */
     }
     </style>
     """,
@@ -25,5 +29,5 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Añadir el título
-st.title("Portal de Matrícula")
+# Añadir el título centrado
+st.title("Portal de Matrícula",  class="titulo")
