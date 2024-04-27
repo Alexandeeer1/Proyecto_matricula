@@ -30,19 +30,18 @@ def show_logged_in_content(username):
     st.header("PLAN DE ESTUDIOS:")
     url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     df_plan_estudios = pd.read_csv(url_csv)
-    st.write(df_plan_estudios)  # Corregir el nombre del DataFrame
-    #####################################
-     # Obtener los ciclos disponibles en el DataFrame
+
+    # Obtener los ciclos disponibles en el DataFrame
     ciclos = df_plan_estudios['CICLO'].unique()
 
     # Widget multiselect para seleccionar los ciclos
     selected_ciclos = st.multiselect("Seleccione los ciclos:", ciclos)
 
     # Filtrar el DataFrame por los ciclos seleccionados
-    filtered_df = df_plan_estudios[df_plan_estudios['CICLO'].isin(selected_ciclos)]
-
-    # Mostrar el DataFrame filtrado
-    st.write(filtered_df)
+    for ciclo in selected_ciclos:
+        st.subheader(f"Ciclo: {ciclo}")
+        ciclo_df = df_plan_estudios[df_plan_estudios['CICLO'] == ciclo]
+        st.write(ciclo_df)
 
 
 
