@@ -32,17 +32,20 @@ def show_logged_in_content(username):
     df_plan_estudios = pd.read_csv(url_csv)
     st.write(df_plan_estudios)
 
-  # Obtener los ciclos disponibles en el DataFrame
+    # Obtener los ciclos disponibles en el DataFrame
     ciclos = df_plan_estudios['CICLO'].unique()
 
     # Widget select para seleccionar un ciclo
     selected_ciclo = st.selectbox("Seleccione un ciclo:", ciclos)
 
-    resultados = df[df['CICLO'] == selected_ciclo]
-
-    st.write("resuldos de la busqueda")
-    st.write(resultados)
-
+    # Verificar si se ha realizado una selección de ciclo
+    if selected_ciclo:
+        # Filtrar el DataFrame por el ciclo seleccionado
+        resultados = df_plan_estudios[df_plan_estudios['CICLO'] == selected_ciclo]
+        st.write("Resultados de la búsqueda:")
+        st.write(resultados)
+    else:
+        st.write("Por favor, seleccione un ciclo.")
 
 
 
