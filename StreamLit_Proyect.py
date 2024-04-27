@@ -15,7 +15,7 @@ st.markdown(
     .content-container {
         max-width: 80%; /* Ancho máximo del contenido */
         padding: 20px; /* Espaciado interno del contenido */
-        background-color: #f0f0f0; /* Color de fondo del contenido */
+        background-color: #f0f0f6; /* Color de fondo del contenido */
         border-radius: 10px; /* Radio de borde del contenido */
     }
 
