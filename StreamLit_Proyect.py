@@ -31,25 +31,23 @@ def show_logged_in_content(username):
     url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     df_plan_estudios = pd.read_csv(url_csv)
     #####################################
-    
-    opcion_desglose = st.selectbox("Seleccione cómo desglosar el archivo:", ["Por ciclo", "Por curso", "Mostrar todo"])
-    if opcion_desglose == "Por ciclo":
-        # Desglosar por ciclo
-        ciclos = df_plan_estudios['Ciclo'].unique()
-        for ciclo in ciclos:
-            st.subheader(f"Ciclo {ciclo}")
-            df_ciclo = df_plan_estudios[df_plan_estudios['Ciclo'] == ciclo]
-            st.write(df_ciclo)
-    elif opcion_desglose == "Por curso":
-        # Desglosar por curso
-        cursos = df_plan_estudios['Curso'].unique()
-        for curso in cursos:
-            st.subheader(curso)
-            df_curso = df_plan_estudios[df_plan_estudios['Curso'] == curso]
-            st.write(df_curso)
-    else:
-        # Mostrar todo el archivo CSV
-        st.write(df_plan_estudios)
+     # Obtener los ciclos disponibles en el DataFrame
+    ciclos = df_plan_estudios['CICLO'].unique()
 
+    # Widget multiselect para seleccionar los ciclos
+    selected_ciclos = st.multiselect("Seleccione los ciclos:", ciclos)
+
+    # Filtrar el DataFrame por los ciclos seleccionados
+    filtered_df = df_plan_estudios[df_plan_estudios['CICLO'].isin(selected_ciclos)]
+
+    # Mostrar el DataFrame filtrado
+    st.write(filtered_df)
+
+# Mostrar la página de inicio de sesión
+show_logged_in_content("Usuario")
+
+
+
+    st.write(df_plan_estudios)
 # Mostrar la página de inicio de sesión por defecto
 login_page()
