@@ -2,7 +2,12 @@ import streamlit as st
 import pandas as pd
 
 # Cargar la base de datos de usuarios desde un archivo CSV
-usuarios_df = pd.read_csv("https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/main/uss_pass.csv")
+import requests
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/main/uss_pass.csv"
+response = requests.get(url)
+usuarios_df = pd.read_csv(response.text)
 
 def login(usuario, contraseña):
     """Función para verificar si el usuario y la contraseña son válidos"""
