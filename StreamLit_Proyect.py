@@ -1,4 +1,15 @@
 import streamlit as st
+import pandas as pd
+import requests
+
+# Cargar el archivo CSV desde GitHub
+url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/7cd2140758281c22508e80f81d4e78c34360d983/uss_pass.csv"
+response = requests.get(url_csv)
+if response.status_code == 200:
+    data = response.content.decode('utf-8')
+    df = pd.read_csv(pd.compat.StringIO(data))
+else:
+    st.error("Error al cargar el archivo CSV")
 
 st.markdown("<h1 style='text-align: center;'>Mi Página en Streamlit</h1>", unsafe_allow_html=True)
 
@@ -14,9 +25,8 @@ with st.form(key='login_form'):
     submit_button = st.form_submit_button(label='Iniciar Sesión')
 
     if submit_button:
-        # Aquí puedes agregar la lógica para verificar el usuario y contraseña
-        # Por ejemplo, puedes comparar los valores ingresados con credenciales predefinidas
-        if username == "usuario" and password == "contraseña":
+        # Verificar credenciales en el DataFrame
+        if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
             st.success("¡Inicio de sesión exitoso!")
         else:
             st.error("Usuario o contraseña incorrectos")
