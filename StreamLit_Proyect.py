@@ -3,4 +3,4 @@ import streamlit as st
 st.markdown("<h1 style='text-align: center;'>Mi Página en Streamlit</h1>", unsafe_allow_html=True)
 
 url_imagen = "https://intranet.upch.edu.pe/account/static/img/upch/logo/isotipo.jpg"
-st.markdown(f'<div style="text-align: center;"><img src="{url_imagen}" width="200"><p>Universidad Peruana Cayetano Heredia</p></div>', unsafe_allow_html=True)
+st.markdown(f'<div style="text-align: center; border-radius: 20px; overflow: hidden;"><img src="{url_imagen}" width="200" style="border-radius: 20px;"><p>Universidad Peruana Cayetano Heredia</p></div>', unsafe_allow_html=True)
