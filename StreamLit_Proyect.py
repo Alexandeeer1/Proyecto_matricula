@@ -1,11 +1,19 @@
 import streamlit as st
 
-# Añadir la imagen desde GitHub
-imagen_url = "https://github.com/Alexandeeer1/Proyecto_matricula/blob/e0789261055abb229fc8926be09940af6a169f84/Logo_cayetano.jpg"
+# Establecer el color de fondo y el color del texto del título
 st.markdown(
-    f'<div style="text-align:center"><img src="{imagen_url}" width="100"></div>',
+    """
+    <style>
+    .titulo {
+        background-color: #f0f0f0; /* Color de fondo del título */
+        color: #333333; /* Color del texto del título */
+        padding: 10px; /* Espaciado interno del título */
+        border-radius: 10px; /* Radio de borde del título */
+    }
+    </style>
+    """,
     unsafe_allow_html=True
 )
 
-# Añadir el título
-st.title("Portal de\nMatrícula")
+# Añadir el título con la clase CSS personalizada
+st.markdown('<h1 class="titulo">Portal de Matrícula</h1>', unsafe_allow_html=True)
