@@ -1,7 +1,8 @@
 import streamlit as st
 
-# Título grande
+# Título centrado y más pequeño
 st.title("Mi Página en Streamlit")
+st.markdown("<h1 style='text-align: center; color: black;'>Mi Página en Streamlit</h1>", unsafe_allow_html=True)
 
 # Mostrar la imagen
 imagen_url = "https://intranet.upch.edu.pe/account/static/img/upch/logo/isotipo.jpg"
