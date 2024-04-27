@@ -47,7 +47,5 @@ def show_logged_in_content(username):
 show_logged_in_content("Usuario")
 
 
-
-    st.write(df_plan_estudios)
 # Mostrar la página de inicio de sesión por defecto
 login_page()
