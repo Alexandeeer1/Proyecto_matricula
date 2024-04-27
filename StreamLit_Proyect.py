@@ -37,12 +37,16 @@ def show_logged_in_content(username):
     # Widget select para seleccionar un ciclo
     selected_ciclo = st.selectbox("Seleccione un ciclo:", ciclos)
 
-    # Imprimir el ciclo seleccionado (para verificar)
-    st.write("Ciclo seleccionado:", selected_ciclo)
-
     # Filtrar el DataFrame por el ciclo seleccionado
     ciclo_df = df_plan_estudios[df_plan_estudios['CICLO'] == selected_ciclo]
-    st.write(ciclo_df)
+
+    # Verificar si se ha realizado una selección de ciclo
+    if selected_ciclo:
+        st.write(ciclo_df)
+    else:
+        st.write("Por favor, seleccione un ciclo.")
+
+
 
 
 
