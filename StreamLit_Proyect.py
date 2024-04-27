@@ -27,12 +27,29 @@ def login_page():
 def show_logged_in_content(username):
     st.markdown(f"<h2 style='text-align: center;'>BIENVENIDO, {username}</h2>", unsafe_allow_html=True)
     st.markdown("<h6 style='text-align: center;'>En este apartado podras verificar, ver, y coordinar los cursos cupos y disponibilidad</h6>", unsafe_allow_html=True)
-    st.header("Archivo CSV - PLAN DE ESTUDIOS")
+    st.header("PLAN DE ESTUDIOS:")
     url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     df_plan_estudios = pd.read_csv(url_csv)
     #####################################
-
     
-    st.write(df_plan_estudios)
+    opcion_desglose = st.selectbox("Seleccione cómo desglosar el archivo:", ["Por ciclo", "Por curso", "Mostrar todo"])
+    if opcion_desglose == "Por ciclo":
+        # Desglosar por ciclo
+        ciclos = df_plan_estudios['Ciclo'].unique()
+        for ciclo in ciclos:
+            st.subheader(f"Ciclo {ciclo}")
+            df_ciclo = df_plan_estudios[df_plan_estudios['Ciclo'] == ciclo]
+            st.write(df_ciclo)
+    elif opcion_desglose == "Por curso":
+        # Desglosar por curso
+        cursos = df_plan_estudios['Curso'].unique()
+        for curso in cursos:
+            st.subheader(curso)
+            df_curso = df_plan_estudios[df_plan_estudios['Curso'] == curso]
+            st.write(df_curso)
+    else:
+        # Mostrar todo el archivo CSV
+        st.write(df_plan_estudios)
+
 # Mostrar la página de inicio de sesión por defecto
 login_page()
