@@ -19,35 +19,15 @@ def login_page():
             if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
                 st.success("¡Inicio de sesión exitoso!")
                 # Llamar a la función para mostrar la nueva sección
-                show_logged_in_section()
+                show_logged_in_content()
             else:
                 st.error("Usuario o contraseña incorrectos")
 
 # Función para mostrar la nueva sección después de iniciar sesión
-def show_logged_in_section():
-    st.sidebar.title("Menú")
-    selected_section = st.sidebar.selectbox("Seleccione una opción", ["Inicio", "Perfil", "Otra sección"])
-    if selected_section == "Inicio":
-        return show_home_page()
-    elif selected_section == "Perfil":
-        return show_profile_page()
-    elif selected_section == "Otra sección":
-        return show_other_page()
-
-# Función para mostrar la página de inicio
-def show_home_page():
-    st.markdown("<h2 style='text-align: center;'>Bienvenido a la página de inicio</h2>", unsafe_allow_html=True)
-    st.write("Aquí puedes agregar el contenido de la página de inicio")
-
-# Función para mostrar la página de perfil
-def show_profile_page():
-    st.markdown("<h2 style='text-align: center;'>Perfil de usuario</h2>", unsafe_allow_html=True)
-    st.write("Aquí puedes ver y editar tu perfil")
-
-# Función para mostrar otra página
-def show_other_page():
-    st.markdown("<h2 style='text-align: center;'>Otra sección</h2>", unsafe_allow_html=True)
-    st.write("Aquí puedes agregar el contenido de otra sección")
+def show_logged_in_content():
+    st.markdown("<h2 style='text-align: center;'>Bienvenido, usuario</h2>", unsafe_allow_html=True)
+    st.write("Aquí puedes agregar el contenido después de iniciar sesión")
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
+
