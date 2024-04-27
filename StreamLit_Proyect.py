@@ -26,7 +26,7 @@ def login_page():
 # Función para mostrar la nueva sección después de iniciar sesión
 def show_logged_in_content(username):
     st.markdown(f"<h2 style='text-align: center;'>BIENVENIDO, {username}</h2>", unsafe_allow_html=True)
-    st.markdown("<h5 style='text-align: center;'>En este apartado podras verificar, ver, y coordinar los cursos cupos y disponibilidad</h5>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center;'>En este apartado podras verificar, ver, y coordinar los cursos cupos y disponibilidad</h6>", unsafe_allow_html=True)
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
