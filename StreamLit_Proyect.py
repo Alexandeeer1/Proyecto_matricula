@@ -43,7 +43,5 @@ def show_logged_in_content(username):
     # Mostrar el DataFrame filtrado
     st.write(filtered_df)
 
-
-
-# Mostrar la página de inicio de sesión por defecto
+# Mostrar la página de inicio de sesión
 login_page()
