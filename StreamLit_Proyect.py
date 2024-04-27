@@ -30,6 +30,7 @@ def show_logged_in_content(username):
     st.header("PLAN DE ESTUDIOS:")
     url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     df_plan_estudios = pd.read_csv(url_csv)
+    st.write(df_plna_estudios)
     #####################################
      # Obtener los ciclos disponibles en el DataFrame
     ciclos = df_plan_estudios['CICLO'].unique()
