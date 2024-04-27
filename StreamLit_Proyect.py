@@ -26,7 +26,17 @@ def login_page():
 # Función para mostrar la nueva sección después de iniciar sesión
 def show_logged_in_content(username):
     st.markdown(f"<h2 style='text-align: center;'>BIENVENIDO, {username}</h2>", unsafe_allow_html=True)
-    st.markdown("<h6 style='text-align: center;'>En este apartado podras verificar, ver, y coordinar los cursos cupos y disponibilidad</h6>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center;'>En este apartado podrás verificar, ver, y coordinar los cursos cupos y disponibilidad</h6>", unsafe_allow_html=True)
+    
+    st.header("Archivo CSV - PLAN DE ESTUDIOS")
+    
+    url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
+    df = pd.read_csv(url_csv)
+    
+    st.write(df)
+
+# Ejemplo de llamada a la función
+show_logged_in_content("Usuario")
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
