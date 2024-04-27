@@ -38,6 +38,11 @@ def show_logged_in_content(username):
     # Widget select para seleccionar un ciclo
     selected_ciclo = st.selectbox("Seleccione un ciclo:", ciclos)
 
+    resultados = df[df['CICLO'] == selected_ciclo]
+
+    st.write("resuldos de la busqueda")
+    st.wirte(resultados)
+    
     # Verificar si se ha realizado una selección de ciclo
     if selected_ciclo:
         # Filtrar el DataFrame por el ciclo seleccionado
