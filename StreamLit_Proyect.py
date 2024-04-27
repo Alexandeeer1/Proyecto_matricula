@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 
@@ -6,15 +7,17 @@ df = pd.read_csv(url_csv)
 st.markdown("<h1 style='text-align: center;'>PORTAL DE MATRICULA CAYETANO</h1>", unsafe_allow_html=True)
 url_imagen = "https://intranet.upch.edu.pe/account/static/img/upch/logo/isotipo.jpg"
 st.markdown(f'<div style="text-align: center; border-radius: 20px; overflow: hidden; margin-bottom: 50px;"><img src="{url_imagen}" width="200" style="border-radius: 20px;"></div>', unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center;'>Log In</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>INICIE SESIÓN</h2>", unsafe_allow_html=True)
 #####################################################################################
 
 with st.form(key='login_form'):
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    submit_button = st.form_submit_button(label='Log In')
+    submit_button = st.form_submit_button(label='INICIE SESIÓN')
     if submit_button:
         if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
             st.success("¡Inicio de sesión exitoso!")
         else:
             st.error("Usuario o contraseña incorrectos")
+
+
