@@ -34,14 +34,13 @@ def show_logged_in_content(username):
     # Obtener los ciclos disponibles en el DataFrame
     ciclos = df_plan_estudios['CICLO'].unique()
 
-    # Widget multiselect para seleccionar los ciclos
-    selected_ciclos = st.multiselect("Seleccione los ciclos:", ciclos)
+    # Widget select para seleccionar un ciclo
+    selected_ciclo = st.selectbox("Seleccione un ciclo:", ciclos)
 
-    # Filtrar el DataFrame por los ciclos seleccionados
-    for ciclo in selected_ciclos:
-        st.subheader(f"Ciclo: {ciclo}")
-        ciclo_df = df_plan_estudios[df_plan_estudios['CICLO'] == ciclo]
-        st.write(ciclo_df)
+    # Filtrar el DataFrame por el ciclo seleccionado
+    ciclo_df = df_plan_estudios[df_plan_estudios['CICLO'] == selected_ciclo]
+    st.write(ciclo_df)
+
 
 
 
