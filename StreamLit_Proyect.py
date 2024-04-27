@@ -19,15 +19,14 @@ def login_page():
             if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
                 st.success("¡Inicio de sesión exitoso!")
                 # Llamar a la función para mostrar la nueva sección
-                show_logged_in_content()
+                show_logged_in_content(username)
             else:
                 st.error("Usuario o contraseña incorrectos")
 
 # Función para mostrar la nueva sección después de iniciar sesión
-def show_logged_in_content():
-    st.markdown("<h2 style='text-align: center;'>Bienvenido, usuario</h2>", unsafe_allow_html=True)
+def show_logged_in_content(username):
+    st.markdown(f"<h2 style='text-align: center;'>Bienvenido, {username}</h2>", unsafe_allow_html=True)
     st.write("Aquí puedes agregar el contenido después de iniciar sesión")
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
-
