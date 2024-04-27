@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Establecer el estilo CSS para la imagen y el título
+# Establecer el estilo CSS para el título y la imagen
 st.markdown(
     """
     <style>
@@ -12,6 +12,7 @@ st.markdown(
     }
 
     .imagen {
+        width: 100%; /* Ancho completo horizontalmente */
         border-radius: 10px; /* Radio de borde de la imagen */
     }
     </style>
@@ -19,10 +20,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Añadir la imagen centrada con la clase CSS personalizada
+# Añadir la imagen con la clase CSS personalizada
 imagen_url = "https://intranet.upch.edu.pe/account/static/img/upch/logo/isotipo.jpg"
 st.markdown(
-    f'<div style="text-align:center"><img src="{imagen_url}" width="100" class="imagen"></div>',
+    f'<img src="{imagen_url}" class="imagen">',
     unsafe_allow_html=True
 )
 
