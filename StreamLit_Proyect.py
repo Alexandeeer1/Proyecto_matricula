@@ -1,41 +1,33 @@
 import streamlit as st
-import hashlib
+import pandas as pd
 
-# Configuración de la página
-st.set_page_config(page_title="Mi Aplicación", page_icon=":lock:", layout="wide")
+# Cargar la base de datos de usuarios desde un archivo CSV
+usuarios_df = pd.read_csv("usuarios.csv")  # Asegúrate de tener este archivo creado
 
-# Título grande en el centro
-st.title("Bienvenido a Mi Aplicación")
-st.write("")  # Espacio en blanco para separar el título del formulario
+def login(usuario, contraseña):
+    """Función para verificar si el usuario y la contraseña son válidos"""
+    if usuario in usuarios_df["Usuario"].values:
+        index = usuarios_df.index[usuarios_df["Usuario"] == usuario][0]
+        if usuarios_df.at[index, "Contraseña"] == contraseña:
+            return True
+    return False
 
-# Formulario de login
-with st.form("login_form"):
-    username = st.text_input("Usuario")
-    password = st.text_input("Contraseña", type="password")
-    submit_button = st.form_submit_button("Iniciar sesión")
+# Página de inicio de sesión
+def main():
+    st.title("Página de Inicio de Sesión")
 
-# Función para autenticar al usuario
-def authenticate(username, password):
-    # En un sistema real, aquí deberías consultar una base de datos o un servicio de autenticación
-    # Para fines de demostración, solo voy a verificar si el usuario y contraseña son "admin"
-    if username == "admin" and password == "admin":
-        return True
-    else:
-        return False
+    # Campos de entrada para usuario y contraseña
+    usuario = st.text_input("Usuario")
+    contraseña = st.text_input("Contraseña", type="password")
 
-# Procesar el formulario de login
-if submit_button:
-    if authenticate(username, password):
-        # Redirigir a la página de bienvenida si el usuario se autentica correctamente
-        st.session_state["authenticated"] = True
-        st.write("¡Bienvenido!")
-        st.write("Has iniciado sesión correctamente.")
-        st.button("Ir a la página de bienvenida", on_click=lambda: st.write("¡Hola!"))
-    else:
-        st.error("Usuario o contraseña incorrectos")
+    # Botón para iniciar sesión
+    if st.button("Iniciar Sesión"):
+        if login(usuario, contraseña):
+            st.success("Inicio de sesión exitoso!")
+            # Redirigir a otra página después del inicio de sesión
+            st.write("Aquí puedes colocar el código para redirigir a otra página")
+        else:
+            st.error("Usuario o contraseña incorrectos")
 
-# Página de bienvenida (solo se muestra si el usuario se autentica correctamente)
-if "authenticated" in st.session_state and st.session_state["authenticated"]:
-    st.title("Página de bienvenida")
-    st.write("¡Hola! Has iniciado sesión correctamente.")
-    st.button("Cerrar sesión", on_click=lambda: st.session_state["authenticated"] = False)
+if __name__ == "__main__":
+    main()
