@@ -13,7 +13,7 @@ st.markdown("<h2 style='text-align: center;'>INICIE SESIÓN</h2>", unsafe_allow_
 with st.form(key='login_form'):
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    submit_button = st.form_submit_button(label='INICIE SESIÓN')
+    submit_button = st.form_submit_button(label='Inicie Sesión')
     if submit_button:
         if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
             st.success("¡Inicio de sesión exitoso!")
