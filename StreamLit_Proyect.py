@@ -1,15 +1,9 @@
 import streamlit as st
 import pandas as pd
-import requests
 
-# Cargar el archivo CSV desde GitHub
+# Cargar el archivo CSV directamente
 url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/7cd2140758281c22508e80f81d4e78c34360d983/uss_pass.csv"
-response = requests.get(url_csv)
-if response.status_code == 200:
-    data = response.content.decode('utf-8')
-    df = pd.read_csv(pd.compat.StringIO(data))
-else:
-    st.error("Error al cargar el archivo CSV")
+df = pd.read_csv(url_csv)
 
 st.markdown("<h1 style='text-align: center;'>Mi Página en Streamlit</h1>", unsafe_allow_html=True)
 
