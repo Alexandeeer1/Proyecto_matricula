@@ -28,11 +28,11 @@ def show_logged_in_section():
     st.sidebar.title("Menú")
     selected_section = st.sidebar.selectbox("Seleccione una opción", ["Inicio", "Perfil", "Otra sección"])
     if selected_section == "Inicio":
-        show_home_page()
+        return show_home_page()
     elif selected_section == "Perfil":
-        show_profile_page()
+        return show_profile_page()
     elif selected_section == "Otra sección":
-        show_other_page()
+        return show_other_page()
 
 # Función para mostrar la página de inicio
 def show_home_page():
