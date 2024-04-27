@@ -18,6 +18,10 @@ st.markdown(
         background-color: #f0f0f0; /* Color de fondo del contenido */
         border-radius: 10px; /* Radio de borde del contenido */
     }
+
+    .titulo {
+        text-align: center; /* Centrar el texto del título */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -36,7 +40,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("Portal de Matrícula",  class="titulo")
+st.markdown('<h1 class="titulo">Portal de Matrícula</h1>', unsafe_allow_html=True)
 
 # Cierre del contenedor interno
 st.markdown('</div>', unsafe_allow_html=True)
