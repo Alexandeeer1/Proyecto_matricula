@@ -31,14 +31,17 @@ def show_logged_in_content(username):
     url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     df_plan_estudios = pd.read_csv(url_csv)
     #####################################
-     # Obtener los ciclos disponibles en el DataFrame
+    # Obtener los ciclos disponibles en el DataFrame
     ciclos = df_plan_estudios['CICLO'].unique()
+    st.write("Ciclos disponibles:", ciclos)  # Mostrar los ciclos para depuración
 
     # Widget multiselect para seleccionar los ciclos
     selected_ciclos = st.multiselect("Seleccione los ciclos:", ciclos)
+    st.write("Ciclos seleccionados:", selected_ciclos)  # Mostrar los ciclos seleccionados para depuración
 
     # Filtrar el DataFrame por los ciclos seleccionados
     filtered_df = df_plan_estudios[df_plan_estudios['CICLO'].isin(selected_ciclos)]
+    st.write("DataFrame filtrado:", filtered_df)  # Mostrar el DataFrame filtrado para depuración
 
     # Mostrar el DataFrame filtrado
     st.write(filtered_df)
