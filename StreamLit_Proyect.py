@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Establecer el color de fondo y el color del texto del título
+# Establecer el estilo CSS para la imagen y el título
 st.markdown(
     """
     <style>
@@ -10,8 +10,19 @@ st.markdown(
         padding: 10px; /* Espaciado interno del título */
         border-radius: 10px; /* Radio de borde del título */
     }
+
+    .imagen {
+        border-radius: 10px; /* Radio de borde de la imagen */
+    }
     </style>
     """,
+    unsafe_allow_html=True
+)
+
+# Añadir la imagen centrada con la clase CSS personalizada
+imagen_url = "https://github.com/Alexandeeer1/Proyecto_matricula/raw/main/Logo_cayetano.jpg"
+st.markdown(
+    f'<div style="text-align:center"><img src="{imagen_url}" width="100" class="imagen"></div>',
     unsafe_allow_html=True
 )
 
