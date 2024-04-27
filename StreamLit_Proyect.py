@@ -29,5 +29,5 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Añadir el título centrado
-st.title("Portal de Matrícula",  class="titulo")
+# Añadir el título centrado utilizando HTML y CSS
+st.markdown('<h1 class="titulo">Portal de Matrícula</h1>', unsafe_allow_html=True)
