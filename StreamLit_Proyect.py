@@ -18,15 +18,19 @@ def login_page():
         if submit_button:
             if (df['Usuarios'] == int(username)).any() and (df['Contraseña'] == password).any():
                 st.success("¡Inicio de sesión exitoso!")
-                # Llamar a la función de la nueva página
-                logged_in_page()
+                # Llamar a la función para mostrar la nueva sección
+                show_logged_in_section()
             else:
                 st.error("Usuario o contraseña incorrectos")
 
-# Página después de iniciar sesión
-def logged_in_page():
-    st.markdown("<h2 style='text-align: center;'>Bienvenido, usuario</h2>", unsafe_allow_html=True)
-    st.write("Aquí puedes agregar el contenido de la página después de iniciar sesión")
+# Función para mostrar la nueva sección después de iniciar sesión
+def show_logged_in_section():
+    st.sidebar.title("Menú")
+    selected_section = st.sidebar.selectbox("Seleccione una opción", ["Inicio", "Perfil", "Otra sección"])
+    if selected_section == "Perfil":
+        st.write("Aquí puedes ver y editar tu perfil")
+    elif selected_section == "Otra sección":
+        st.write("Aquí puedes agregar el contenido de otra sección")
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
