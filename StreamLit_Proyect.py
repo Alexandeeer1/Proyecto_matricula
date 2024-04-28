@@ -51,34 +51,14 @@ def show_logged_in_content(username):
 
     # Función para obtener el color de fondo según el ciclo
     def get_bg_color(ciclo):
-        if ciclo.startswith("PRIMER"):
-            return ""
-        elif ciclo.startswith("SEGUNDO"):
-            return ""  
-        elif ciclo.startswith("TERCER"):
-            return "" 
-        elif ciclo.startswith("CUARTO"):
-            return "" 
-        elif ciclo.startswith("QUINTO"):
-            return ""  
-        elif ciclo.startswith("SEXTO"):
-            return "" 
-        elif ciclo.startswith("SEPTIMO"):
-            return ""  
-        elif ciclo.startswith("OCTAVO"):
-            return "" 
-        elif ciclo.startswith("NOVENO"):
-            return ""  
-        elif ciclo.startswith("DECIMO"):
-            return ""  
-        else:
-            return "" 
+        return ""  # Sin color de fondo
 
     # Mostrar los cursos por ciclo
     for ciclo in data["CICLO"].unique():
         cursos = data[data["CICLO"] == ciclo]
-        st.subheader(f"{ciclo}")
-        st.write(cursos.style.apply(lambda x: [f"background-color: {get_bg_color(ciclo)}"] * len(x), axis=1).to_html(), unsafe_allow_html=True)
+        centered_ciclo = f"<div style='text-align: center;'>{ciclo}</div>"
+        st.markdown(centered_ciclo, unsafe_allow_html=True)
+        st.write(cursos.to_html(index=False), unsafe_allow_html=True)
 
     # Nota al pie
     st.write("Nota: Los cursos en color tienen prerrequisitos que deben ser aprobados antes de llevarlos.")
