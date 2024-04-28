@@ -45,6 +45,7 @@ def show_logged_in_content(username):
                 <style>
                 tbody th {display:none;}
                 .blank {display:none;}
+                .styled th:nth-child(1) { background-color: #F0F8FF; } /* Color de fondo solo para la columna "CICLO" */
                 </style>
                 """
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
@@ -58,7 +59,7 @@ def show_logged_in_content(username):
         cursos = data[data["CICLO"] == ciclo]
         centered_ciclo = f"<div style='text-align: center; font-size: 36px; font-weight: bold;'>{ciclo}</div>"
         st.markdown(centered_ciclo, unsafe_allow_html=True)
-        st.write(cursos.to_html(index=False), unsafe_allow_html=True)
+        st.write(cursos.to_html(classes=["styled"], index=False), unsafe_allow_html=True)
 
     # Nota al pie
     st.write("Nota: Los cursos en color tienen prerrequisitos que deben ser aprobados antes de llevarlos.")
