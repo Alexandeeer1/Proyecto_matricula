@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# Configurar el diseño de la página
+st.set_page_config(page_title="Gestión de Cursos UPCH", page_icon=":books:", layout="wide")
+
 url_csv = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/7cd2140758281c22508e80f81d4e78c34360d983/uss_pass.csv"
 df = pd.read_csv(url_csv)
 st.markdown("<h1 style='text-align: center;'>PORTAL DE MATRICULA CAYETANO</h1>", unsafe_allow_html=True)
@@ -32,9 +35,6 @@ def show_logged_in_content(username):
     # Cargar datos desde el archivo CSV
     url_csv_plan = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
     data = pd.read_csv(url_csv_plan)
-
-    # Configurar el diseño de la página
-    st.set_page_config(page_title="Gestión de Cursos UPCH", page_icon=":books:", layout="wide")
 
     # Encabezado y descripción
     st.title("Gestión de Cursos de Ingeniería Informática - UPCH")
