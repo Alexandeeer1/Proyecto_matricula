@@ -56,7 +56,7 @@ def show_logged_in_content(username):
     # Mostrar los cursos por ciclo
     for ciclo in data["CICLO"].unique():
         cursos = data[data["CICLO"] == ciclo]
-        centered_ciclo = f"<div style='text-align: center;'>{ciclo}</div>"
+        centered_ciclo = f"<div style='text-align: center; font-size: 24px;'>{ciclo}</div>"
         st.markdown(centered_ciclo, unsafe_allow_html=True)
         st.write(cursos.to_html(index=False), unsafe_allow_html=True)
 
