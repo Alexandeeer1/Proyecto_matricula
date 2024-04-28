@@ -43,9 +43,10 @@ def show_logged_in_content(username):
     # Estilos CSS
     hide_table_row_index = """
                 <style>
+                tbody th:nth-child(2), tbody td:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo para la columna "CICLO" */
+                .styled th:nth-child(2), .styled td:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo para la columna "CICLO" en la tabla generada */
                 tbody th {display:none;}
                 .blank {display:none;}
-                .styled th:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo solo para la columna "CICLO" */
                 </style>
                 """
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
