@@ -30,7 +30,8 @@ def show_logged_in_content(username):
     st.header("Gestión de Cursos UPCH")
 
     # Cargar datos desde el archivo CSV
-    data = pd.read_csv("database.csv")
+    url_csv_plan = "https://raw.githubusercontent.com/Alexandeeer1/Proyecto_matricula/94a5f65b0920df8b0f0ad31270c101d381f62546/PLAN_DE_ESTUDIOS.csv"
+    data = pd.read_csv(url_csv_plan)
 
     # Configurar el diseño de la página
     st.set_page_config(page_title="Gestión de Cursos UPCH", page_icon=":books:", layout="wide")
@@ -84,4 +85,3 @@ def show_logged_in_content(username):
 
 # Mostrar la página de inicio de sesión por defecto
 login_page()
-
