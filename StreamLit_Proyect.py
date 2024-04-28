@@ -44,7 +44,9 @@ def show_logged_in_content(username):
     hide_table_row_index = """
                 <style>
                 tbody th:nth-child(2), tbody td:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo para la columna "CICLO" */
+                tbody th:nth-child(1), tbody td:nth-child(1) { background-color: #F0F8FF; } /* Color de fondo para la columna "ID" */
                 .styled th:nth-child(2), .styled td:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo para la columna "CICLO" en la tabla generada */
+                .styled th:nth-child(1), .styled td:nth-child(1) { background-color: #F0F8FF; } /* Color de fondo para la columna "ID" en la tabla generada */
                 tbody th {display:none;}
                 .blank {display:none;}
                 </style>
