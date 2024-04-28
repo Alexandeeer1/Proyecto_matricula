@@ -61,11 +61,4 @@ def show_logged_in_content(username):
     for ciclo in data["CICLO"].unique():
         cursos = data[data["CICLO"] == ciclo]
         centered_ciclo = f"<div style='text-align: center; font-size: 36px; font-weight: bold;'>{ciclo}</div>"
-        st.markdown(centered_ciclo, unsafe_allow_html=True)
-        st.write(cursos.to_html(classes=["styled"], index=False), unsafe_allow_html=True)
-
-    # Nota al pie
-    st.write("Nota: Los cursos en color tienen prerrequisitos que deben ser aprobados antes de llevarlos.")
-
-# Mostrar la página de inicio de sesión por defecto
-login_page()
+        st.markdown
