@@ -45,7 +45,7 @@ def show_logged_in_content(username):
                 <style>
                 tbody th {display:none;}
                 .blank {display:none;}
-                .styled th:nth-child(1) { background-color: #F0F8FF; } /* Color de fondo solo para la columna "CICLO" */
+                .styled th:nth-child(2) { background-color: #F0F8FF; } /* Color de fondo solo para la columna "CICLO" */
                 </style>
                 """
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
