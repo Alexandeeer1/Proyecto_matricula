@@ -52,27 +52,27 @@ def show_logged_in_content(username):
     # Función para obtener el color de fondo según el ciclo
     def get_bg_color(ciclo):
         if ciclo.startswith("PRIMER"):
-            return "#F0F8FF"  # Azul claro
+            return ""
         elif ciclo.startswith("SEGUNDO"):
-            return "#E0FFFF"  # Turquesa claro
+            return ""  
         elif ciclo.startswith("TERCER"):
-            return "#FAFAD2"  # Amarillo claro
+            return "" 
         elif ciclo.startswith("CUARTO"):
-            return "#FAF0E6"  # Lino
+            return "" 
         elif ciclo.startswith("QUINTO"):
-            return "#FFF5EE"  # Seashell
+            return ""  
         elif ciclo.startswith("SEXTO"):
-            return "#F5F5DC"  # Beige
+            return "" 
         elif ciclo.startswith("SEPTIMO"):
-            return "#E6E6FA"  # Lavanda
+            return ""  
         elif ciclo.startswith("OCTAVO"):
-            return "#FFF0F5"  # Lavanda rojizo
+            return "" 
         elif ciclo.startswith("NOVENO"):
-            return "#F8F8FF"  # Azul fantasma
+            return ""  
         elif ciclo.startswith("DECIMO"):
-            return "#F5DEB3"  # Wheat
+            return ""  
         else:
-            return ""  # Sin color de fondo
+            return "" 
 
     # Mostrar los cursos por ciclo
     for ciclo in data["CICLO"].unique():
